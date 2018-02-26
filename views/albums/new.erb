@@ -1,0 +1,29 @@
+<h2>Add Album</h2>
+<form method="POST" action="/albums">
+  <div class="form-wrapper">
+
+    <div class="form-el">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name"/>
+    </div>
+
+    <div class="form-el">
+      <label for="quantity">Quantity:</label>
+      <input type="number" min="0" name="quantity" id="quantity"/>
+    </div>
+
+    <div class="form-el">
+      <label for="artist_select">Select Artist:</label>
+      <select name="artist_id" id="artist_select">
+        <% @artists.each do |artist| %>
+            <option value=<%= artist.id %>><%= artist.name.capitalize %></option>
+        <% end %>
+      </select>
+    </div>
+
+    <div class="form-el">
+      <input type="submit" value="Add Album"/>
+    </div>
+
+  </div>
+</form>

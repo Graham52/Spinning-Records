@@ -1,0 +1,8 @@
+<p> Name: <%= @album.name %> </p>
+<p> Quantity: <%= @album.quantity%> </p>
+<p> Artist ID: <%= @album.artist_id%> </p>
+<p> <a href="/albums/<%= @album.id %>/edit"> Modify this Stock </a></p>
+
+<form method="post" action="/albums/<%= @album.id %>/delete">
+    <input type="submit" value="Delete Order" />
+</form>
