@@ -15,17 +15,12 @@ get '/albums' do
 
 end
 
-get '/show_artists' do
-  @artists = Artist.all()
-  erb(:show_artists)
-end
-# get '/students' do
-#   @students = Student.all
-#   erb(:index)
+# get '/show_artists' do
+#   @artists = Artist.all()
+#   erb(:show_artists)
 # end
-#
+
 get '/albums/new' do
-  # @albums = Album.all
   @artists = Artist.all()
   erb(:"albums/new")
 end
@@ -36,7 +31,6 @@ post '/albums' do
 end
 #
 get '/artists/new' do
-  # @albums = Album.all
   @artists = Artist.all()
   erb(:"artists/new")
 end
@@ -47,24 +41,25 @@ post '/artists' do
 end
 
 get '/albums/:id' do
-  @album = Album.find_by_id(params['id'])
-  erb(:show)
+  @artists = Artist.all()
+  @albums = Album.find_by_id(params['id'])
+  erb(:"albums/show")
 end
-#
-# get '/albums/:id/edit' do
-#   @artist = Artist.all
-#   @albums = Albums.find_by_id(params['id'])
-#   erb(:edit)
-# end
-#
+
+get '/albums/:id/edit' do
+  @artists = Artist.all
+  @albums = Album.find_by_id(params['id'])
+  erb(:"albums/edit")
+end
+
 post '/albums/:id' do
   album = Album.new(params)
   album.update
   redirect to "/albums/#{params['id']}"
 end
-#
-# post '/albums/:id/delete' do
-#   album = Album.find_by_id(params['id'])
-#   album.delete
-#   redirect to '/albums'
-# end
+
+post '/albums/:id/delete' do
+  album = Album.find_by_id(params['id'])
+  album.delete
+  redirect to '/albums'
+end

@@ -2,8 +2,8 @@ require_relative( '../db/sql_runner' )
 
 class Album
 
-  attr_accessor ( :artist_id )
-  attr_reader( :name, :quantity, :id)
+  attr_accessor(:name, :quantity, :artist_id )
+  attr_reader(:id)
 
   def initialize( options )
     @id = nil || options['id'].to_i
@@ -30,6 +30,22 @@ class Album
       @id = album.first()['id'].to_i
     end
 
+    def update()
+        sql = "UPDATE albums
+        SET
+        (
+          name,
+          quantity,
+          artist_id
+        ) =
+        (
+          $1, $2, $3
+        )
+        WHERE id = $4"
+        values = [@name, @quantity, @artist_id, @id]
+        SqlRunner.run(sql, values)
+    end
+
     def self.all()
     sql = "
       SELECT * FROM albums;
@@ -44,12 +60,19 @@ class Album
     WHERE id = #{id};
   "
   album = SqlRunner.run(sql)[0]
-  return album
+  return Album.new(album)
   end
 
   def self.delete_all
     sql = "DELETE FROM albums"
     SqlRunner.run( sql )
+  end
+
+  def delete()
+    sql = "DELETE FROM albums
+    WHERE id = $1"
+    values = [@id]
+    SqlRunner.run( sql, values )
   end
 
   def stock_level()

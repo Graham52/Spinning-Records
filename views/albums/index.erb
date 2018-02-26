@@ -1,15 +1,23 @@
-<h2>Albums</h2>
+<h2>Inventory</h2>
 
 <div id="album-wrapper">
-  <% @albums.each do |album| %>
 
-  <div class="albums">
-    <!-- <h3><a href="/albums/<%= album.id %>"><%= album.name %></a></h3> -->
-    <p>Album: <%= album.name %></p>
-    <p>Quantity: <%= album.quantity %></p>
-    <p>Artist: <%= Artist.artist_name(album.artist_id) %></p>
-    <p>Stock Level: <%= album.stock_level() %></p>
-    <hr>
-  </div>
-  <% end %>
+  <table>
+  <tr>
+    <th>Album</th>
+    <th>Quantity</th>
+    <th>Artist</th>
+    <th>Stock Level</th>
+  </tr>
+  <% @albums.each do |album| %>
+  <tr>
+    <td><a href="/albums/<%= album.id %>"><%= album.name %></a></td>
+    <!-- <td><%= album.name %></td> -->
+    <td><%= album.quantity %></td>
+    <td><%= Artist.artist_name(album.artist_id) %></td>
+    <td><%= album.stock_level() %></td>
+  </tr>
+<% end %>
+</table>
+
 </div>

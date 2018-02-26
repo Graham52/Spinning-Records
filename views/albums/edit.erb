@@ -1,0 +1,25 @@
+<form method="post" action="/albums/<%= @albums.id %>">
+  <label for="name"> Name: </label>
+  <input id="name" value="<%= @albums.name() %>" type="text" name="name" />
+
+  <div class="form-el">
+    <label for="quantity"> Quantity: </label>
+    <input type="number" value="<%= @albums.quantity() %>" id="quantity" name="quantity"/>
+  </div>
+
+  <div class="form-el">
+    <label for="artist_select">Select Artist:</label>
+    <select name="artist_id" id="artist_select" selected="<%= @albums.artist_id  %>">
+      <% @artists.each do |artist| %>
+        <% if artist.id == @albums.artist_id %>
+          <option value=<%= artist.id %> selected><%= artist.name.capitalize %></option>
+        <% else %>
+          <option value=<%= artist.id %>><%= artist.name.capitalize %></option>
+        <% end %>
+      <% end %>
+    </select>
+  </div>
+
+  <input type="submit" value="Update Stock"/>
+
+</form>
