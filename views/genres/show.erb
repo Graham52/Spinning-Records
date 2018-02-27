@@ -1,0 +1,17 @@
+<!-- <h2>Genre Type</h2> -->
+
+<div id="genre-wrapper">
+  
+  <br>
+  <table>
+  <tr>
+    <th> Genre Type</th>
+  </tr>
+  <% @genres.each do |genre| %>
+  <tr>
+    <td><%= genre.type %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>

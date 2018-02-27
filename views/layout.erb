@@ -2,17 +2,19 @@
 <html>
 <head>
   <title>Spinning Records Inventory</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css">
   <link rel="icon" href="/spinning-7-inch.gif" />
 </head>
 <body>
-  <img src="/spinning-7-inch.gif" style="width:100px;height:100px;">
+  <img src="/spinning-7-inch.gif" style="width:100px;height:100px;" id="logo">
   <nav>
     <ul>
-      <li>
-        <a href="/albums">Inventory</a>
-        <a href="/albums/new">Add new Album</a>
-        <a href="/artists/new">Add new Artist</a>
-      </li>
+        <li><a href="/albums">Inventory</a></li>
+        <li><a href="/albums/new">Add new Album</a></li>
+        <li><a href="/artists/new">Add new Artist</a></li>
+        <li><a href="/genres/new">Add new Genre</a></li>
+        <li><a href="/artists">Show Artists</a></li>
+        <li><a href="/genres">Show Genres</a></li>
     </ul>
   </nav>
   <%= yield %>

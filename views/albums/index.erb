@@ -5,17 +5,20 @@
   <table>
   <tr>
     <th>Album</th>
-    <th>Quantity</th>
-    <th>Artist</th>
-    <th>Stock Level</th>
+    <th> Quantity</th>
+    <th> Artist</th>
+    <th> Stock Level</th>
+    <th> Profit Margin</th>
+    <th> Genre</th>
   </tr>
   <% @albums.each do |album| %>
   <tr>
     <td><a href="/albums/<%= album.id %>"><%= album.name %></a></td>
-    <!-- <td><%= album.name %></td> -->
     <td><%= album.quantity %></td>
     <td><%= Artist.artist_name(album.artist_id) %></td>
     <td><%= album.stock_level() %></td>
+    <td><%= album.profit_level().to_i %></td>
+    <td><%= Genre.genre_type(album.genre_id) %></td>
   </tr>
 <% end %>
 </table>

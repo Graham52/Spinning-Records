@@ -2,7 +2,7 @@ require_relative( '../db/sql_runner' )
 
 class Album
 
-  attr_accessor(:name, :quantity, :artist_id )
+  attr_accessor(:name, :quantity, :artist_id, :buy_price, :sell_price, :genre_id )
   attr_reader(:id)
 
   def initialize( options )
@@ -10,6 +10,9 @@ class Album
     @name = options['name']
     @quantity = options['quantity'].to_i
     @artist_id = options['artist_id'].to_i
+    @buy_price = options['buy_price'].to_i
+    @sell_price = options['sell_price'].to_i
+    @genre_id = options['genre_id'].to_i
   end
 
 
@@ -18,14 +21,17 @@ class Album
       (
         name,
         quantity,
-        artist_id
+        artist_id,
+        buy_price,
+        sell_price,
+        genre_id
       )
       VALUES
       (
-        $1, $2, $3
+        $1, $2, $3, $4, $5, $6
       )
-      RETURNING *;"
-      values = [@name, @quantity, @artist_id]
+      RETURNING id"
+      values = [@name, @quantity, @artist_id, @buy_price, @sell_price, @genre_id]
       album = SqlRunner.run(sql, values)
       @id = album.first()['id'].to_i
     end
@@ -36,13 +42,16 @@ class Album
         (
           name,
           quantity,
-          artist_id
+          artist_id,
+          buy_price,
+          sell_price,
+          genre_id
         ) =
         (
-          $1, $2, $3
+          $1, $2, $3, $4, $5, $6
         )
-        WHERE id = $4"
-        values = [@name, @quantity, @artist_id, @id]
+        WHERE id = $7"
+        values = [@name, @quantity, @artist_id, @buy_price, @sell_price, @genre_id, @id]
         SqlRunner.run(sql, values)
     end
 
@@ -84,5 +93,10 @@ class Album
       return "Low"
     end
   end
+
+def profit_level()
+  profit = @sell_price - @buy_price
+  return profit.to_i
+end
 
 end

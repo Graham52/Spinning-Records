@@ -1,0 +1,17 @@
+<!-- <h2>Artist Name</h2> -->
+
+<div id="artist-wrapper">
+  
+  <br>
+  <table>
+  <tr>
+    <th> Artist Name</th>
+  </tr>
+  <% @artists.each do |artist| %>
+  <tr>
+    <td><%= artist.name %></td>
+  </tr>
+<% end %>
+</table>
+
+</div>

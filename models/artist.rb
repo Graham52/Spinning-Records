@@ -18,7 +18,7 @@ class Artist
       (
         $1
       )
-      RETURNING *;"
+      RETURNING id"
       values = [@name]
       results = SqlRunner.run(sql, values)
       @id = results.first()['id'].to_i
@@ -33,7 +33,7 @@ class Artist
 
     def self.find_by_id(id)
       sql = "SELECT * FROM artists WHERE id = #{id};"
-      artists = SqlRunner.run(sql)[0]
+      artist = SqlRunner.run(sql)[0]
       return artist
     end
 

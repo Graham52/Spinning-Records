@@ -4,7 +4,7 @@
 
   <div class="form-el">
     <label for="quantity"> Quantity: </label>
-    <input type="number" value="<%= @albums.quantity() %>" id="quantity" name="quantity"/>
+    <input type="number" value="<%= @albums.quantity() %>" min="0" id="quantity" name="quantity"/>
   </div>
 
   <div class="form-el">
@@ -18,6 +18,21 @@
         <% end %>
       <% end %>
     </select>
+  </div>
+
+  <div class="form-el">
+    <label for="buy_price"> Buy Price: </label>
+    <input type="number" value="<%= @albums.buy_price() %>" id="buy_price" name="buy_price"/>
+  </div>
+
+  <div class="form-el">
+    <label for="sell_price"> Sell Price: </label>
+    <input type="number" value="<%= @albums.sell_price() %>" id="sell_price" name="sell_price"/>
+  </div>
+
+  <div class="form-el">
+    <label for="genre_id"> Genre : </label>
+    <input type="number" value="<%= @albums.genre_id() %>" id="genre_id" name="genre_id"/>
   </div>
 
   <input type="submit" value="Update Stock"/>
