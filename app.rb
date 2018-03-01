@@ -7,7 +7,5 @@ require_relative('controllers/genres_controller.rb')
 get '/albums' do
   @albums = Album.all()
   @artists = Artist.all()
-  # erb(:show)
   erb(:"albums/index")
-
 end

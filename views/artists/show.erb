@@ -1,17 +1,22 @@
 <!-- <h2>Artist Name</h2> -->
 
 <div id="artist-wrapper">
-  
+
   <br>
   <table>
   <tr>
-    <th> Artist Name</th>
+    <th class="a"> Artist Name</th>
   </tr>
+  <br>
   <% @artists.each do |artist| %>
   <tr>
-    <td><%= artist.name %></td>
+    <td class="c"><%= artist.name %></td>
   </tr>
 <% end %>
 </table>
+<br>
+
+  <form method="get" action="/artists/new">
+  <input type="submit" value="Add new Artist" />
 
 </div>

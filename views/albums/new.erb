@@ -1,19 +1,19 @@
-<h2>Add Album</h2>
+<h2 class="b">Add Album</h2>
 <form method="POST" action="/albums">
   <div class="form-wrapper">
 
     <div class="form-el">
-      <label for="name">Name:</label>
-      <input type="text" name="name" id="name"/>
+      <label class="abc" for="name">Name:</label>
+      <input type="text" name="name" id="name" required autofocus/>
     </div>
 
     <div class="form-el">
-      <label for="quantity">Quantity:</label>
+      <label class="abc" for="quantity">Quantity:</label>
       <input type="number" min="0" name="quantity" id="quantity"/>
     </div>
 
     <div class="form-el">
-      <label for="artist_select">Select Artist:</label>
+      <label class="abc" for="artist_select">Select Artist:</label>
       <select name="artist_id" id="artist_select">
         <% @artists.each do |artist| %>
             <option value=<%= artist.id %>><%= artist.name.capitalize %></option>
@@ -22,31 +22,28 @@
     </div>
 
     <div class="form-el">
-      <label for="buy_price">Buy Price:</label>
+      <label class="abc" for="buy_price">Buy Price:</label>
       <input type="number" min="0" name="buy_price" id="buy_price"/>
     </div>
 
     <div class="form-el">
-      <label for="sell_price">Sell Price:</label>
+      <label class="abc" for="sell_price">Sell Price:</label>
       <input type="number" min="0" name="sell_price" id="sell_price"/>
     </div>
 
     <div class="form-el">
-      <label for="genre_select">Select Genre:</label>
+      <label class="abc" for="genre_select">Select Genre:</label>
       <select name="genre_id" id="genre_select">
         <% @genres.each do |genre| %>
             <option value=<%= genre.id %>><%= genre.type.capitalize %></option>
         <% end %>
       </select>
     </div>
+    <br>
 
     <div class="form-el">
       <input type="submit" value="Add Album"/>
     </div>
-
-    <!-- <div class="form-el">
-      <input type="submit" value="Add Artist"/>
-    </div> -->
 
   </div>
 </form>

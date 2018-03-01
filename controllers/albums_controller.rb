@@ -21,13 +21,6 @@ post '/albums' do
   Album.new(params).save
   redirect to '/albums'
 end
-#
-get '/albums/:id' do
-  @artists = Artist.all()
-  @genres = Genre.all()
-  @albums = Album.find_by_id(params['id'])
-  erb(:"albums/show")
-end
 
 get '/albums/:id/edit' do
   @artists = Artist.all()
@@ -36,10 +29,17 @@ get '/albums/:id/edit' do
   erb(:"albums/edit")
 end
 
-post '/albums/:id' do
+get '/albums/:id/show' do
+  @artists = Artist.all()
+  @genres = Genre.all()
+  @albums = Album.find_by_id(params['id'])
+  erb(:"albums/show")
+end
+
+post '/albums/:id/edit' do
   album = Album.new(params)
   album.update
-  redirect to "/albums/#{params['id']}"
+  redirect to "/albums"
 end
 
 post '/albums/:id/delete' do

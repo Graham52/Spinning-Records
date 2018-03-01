@@ -4,7 +4,7 @@
 <p> Buy Price: <%= @albums.buy_price %> </p>
 <p> Sell Price: <%= @albums.sell_price %> </p>
 <p> Genre: <%= Genre.genre_type(@albums.genre_id) %></p>
-<p> <a href="/albums/<%= @albums.id %>/edit"> Modify this Stock </a></p>
+<p> <a href="/albums/<%= @albums.id %>/edit"> Modify Album </a></p>
 
 <form method="post" action="/albums/<%= @albums.id %>/delete">
     <input type="submit" value="Delete Album" />

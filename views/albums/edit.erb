@@ -1,4 +1,5 @@
-<form method="post" action="/albums/<%= @albums.id %>">
+<h2 class="b">Modify Album</h2>
+<form method="post" action="/albums/<%= @albums.id %>/edit">
   <label for="name"> Name: </label>
   <input id="name" value="<%= @albums.name() %>" type="text" name="name" />
 
@@ -9,7 +10,7 @@
 
   <div class="form-el">
     <label for="artist_select">Select Artist:</label>
-    <select name="artist_id" id="artist_select" selected="<%= @albums.artist_id  %>">
+    <select name="artist_id" id="artist_select" selected="<%= @albums.artist_id %>">
       <% @artists.each do |artist| %>
         <% if artist.id == @albums.artist_id %>
           <option value=<%= artist.id %> selected><%= artist.name.capitalize %></option>
@@ -31,10 +32,22 @@
   </div>
 
   <div class="form-el">
-    <label for="genre_id"> Genre : </label>
-    <input type="number" value="<%= @albums.genre_id() %>" id="genre_id" name="genre_id"/>
+    <label for="genre_select"> Genre : </label>
+    <select name="genre_id" id="genre_select" selected="<%= @albums.genre_id  %>">
+      <% @genres.each do |genre| %> -->
+      <% if genre.id == @albums.genre_id %>
+        <option value=<%= genre.id %> selected><%= genre.type.capitalize %></option>
+      <% else %>
+        <option value=<%= genre.id %>><%= genre.type.capitalize %></option>
+      <% end %>
+    <% end %>
+    </select>
   </div>
 
-  <input type="submit" value="Update Stock"/>
+  <br>
+
+  <div class="form-el">
+    <input type="submit" value="Update Album"/>
+  </div>
 
 </form>

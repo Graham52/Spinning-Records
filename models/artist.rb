@@ -22,7 +22,6 @@ class Artist
       values = [@name]
       results = SqlRunner.run(sql, values)
       @id = results.first()['id'].to_i
-      # @id = SqlRunner.run(sql)[0]['id'].to_i
     end
 
     def self.all()
